@@ -1,51 +1,26 @@
 # edu-intro-mysql
 
-> Låna en MySQl Databas, detta görs bara en gång
+## Kör ett script i containern
 
 ```bash
-docker pull mysql/mysql-server:latest
+docker ps -a # Se om containern är igång
+docker start iths-mysql # Starta om den inte är igång
+cd ws
+cd sql # Gå till en katalog där du har scriptet
+docker exec -i iths-mysql mysql -uroot -proot < db.sql # Kör Scriptet
+docker exec -it iths-mysql bash # Lägg till winpty om den klagar på tty
 ```
+
+### I container
 
 ```bash
-docker run --name iths-mysql\
-           -e MYSQL_ROOT_PASSWORD=root\
-           -e MYSQL_USER=iths\
-           -e MYSQL_PASSWORD=iths\
-           -e MYSQL_DATABASE=iths\
-           -p 3306:3306\
-           --tmpfs /var/lib/mysql\
-           -d mysql/mysql-server:latest
-```
-## Docker prosesser
-
-> Se vad som körs
-
-```bash
-docker ps
+mysql -uroot -proot
 ```
 
-## Se vad som inte körs
+### I MySql
 
-> För att se containrar som stannat lägger vi till växeln -a
-
-```bash
-docker ps -a
-```
-
-## Starta MySql
-
-```bash
-docker start iths-mysql
-```
-
-## Stoppa mysql
-
-```
-docker stop iths-mysql
-```
-
-## Starta bash i vår container
-
-```bash
-docker exec -it iths-mysql bash
+```sql
+show databases;
+use Chinook;
+show tables;
 ```
