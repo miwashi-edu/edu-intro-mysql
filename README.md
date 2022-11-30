@@ -16,7 +16,7 @@ docker run --name iths-mysql\
            --tmpfs /var/lib/mysql\
            -d mysql/mysql-server:latest
 ```
-## Docker prosesser
+## Docker processer
 
 > Se vad som körs
 
