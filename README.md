@@ -71,4 +71,4 @@ IGNORE 1 ROWS;
 
 ```
 
-(MySql Character Sets)[https://dev.mysql.com/doc/refman/8.0/en/charset-mysql.html]
+[MySql Character Sets](https://dev.mysql.com/doc/refman/8.0/en/charset-mysql.html)
