@@ -44,7 +44,7 @@ CREATE TABLE `UNF` (
     `Grade` VARCHAR(11) NOT NULL,
     `Hobbies` VARCHAR(25),
     `City` VARCHAR(10) NOT NULL,
-    `School` VARCHAR(20) NOT NULL,
+    `School` VARCHAR(30) NOT NULL,
     `HomePhone` VARCHAR(15),
     `JobPhone` VARCHAR(15),
     `MobilePhone1` VARCHAR(15),
