@@ -22,7 +22,10 @@ mysql -uroot -proot
 
 ## I mysql
 ```sql
-grant
+GRANT ALL PRIVILEGES ON iths.* TO 'iths'@'localhost';
+SHOW GRANTS FOR iths;
+GRANT ALL PRIVILEGES ON iths.* TO 'iths'@'%';
+SHOW GRANTS FOR iths;
 exit
 ```
 
