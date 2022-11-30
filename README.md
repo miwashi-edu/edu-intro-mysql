@@ -53,11 +53,10 @@ CREATE TABLE `UNF` (
 
 DESC UNF;
 
-LOAD DATA INFILE '/var/lib/mysql-files/denormalized-data.csv' INTO TABLE UNF ;
-    
 LOAD DATA INFILE '/var/lib/mysql-files/denormalized-data.csv'
 INTO TABLE UNF 
-FIELDS TERMINATED BY ';'
+CHARACTER SET latin1
+FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
@@ -65,15 +64,6 @@ IGNORE 1 ROWS;
 SELECT * FROM UNF;
 
 DELETE FROM UNF;
-
-LOAD DATA INFILE '/var/lib/mysql-files/denormalized-data.csv'
-INTO TABLE UNF 
-CHARACTER SET ?
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
-
 ```
 
 [MySql Character Sets](https://dev.mysql.com/doc/refman/8.0/en/charset-mysql.html)
