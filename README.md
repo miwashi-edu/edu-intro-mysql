@@ -1,6 +1,6 @@
 # edu-intro-mysql
 
-## Hämta komma separerad datafil
+## Hämta komma-separerad datafil
 
 ```bash
 cd ~
