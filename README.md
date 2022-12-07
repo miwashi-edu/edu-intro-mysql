@@ -24,6 +24,8 @@ mysql -uroot -proot
 ```sql
 SHOW GRANTS FOR iths;
 GRANT ALL PRIVILEGES ON iths.* TO 'iths'@'%';
+GRANT ALL PRIVILEGES ON Chinook.* TO 'iths'@'%';
+GRANT FILE ON iths.* TO 'iths'@'%';
 SHOW GRANTS FOR iths;
 exit
 ```
