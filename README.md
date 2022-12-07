@@ -62,7 +62,7 @@ DESC Student;
 
 ## Lägg till ny data till Student
 
-```
+```sql
 INSERT INTO Student(Name) VALUES('Nisse Karlsson');
 SELECT max(ID) FROM Student);
 
