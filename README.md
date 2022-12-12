@@ -1,51 +1,43 @@
 # edu-intro-mysql
 
-> Låna en MySQl Databas, detta görs bara en gång
+> Normalisering av School
 
-```bash
-docker pull mysql/mysql-server:latest
-```
-
-```bash
-docker run --name iths-mysql\
-           -e MYSQL_ROOT_PASSWORD=root\
-           -e MYSQL_USER=iths\
-           -e MYSQL_PASSWORD=iths\
-           -e MYSQL_DATABASE=iths\
-           -p 3306:3306\
-           --tmpfs /var/lib/mysql\
-           -d mysql/mysql-server:latest
-```
-## Docker processer
-
-> Se vad som körs
-
-```bash
-docker ps
-```
-
-## Se vad som inte körs
-
-> För att se containrar som stannat lägger vi till växeln -a
-
-```bash
-docker ps -a
-```
-
-## Starta MySql
-
-```bash
-docker start iths-mysql
-```
-
-## Stoppa mysql
+## Undersök data
 
 ```
-docker stop iths-mysql
+SELECT 
+Count(DISTINCT Name, City), 
+Count(Distinct Name), 
+Count(DISTINCT School, City), 
+Count(DISTINCT School) 
+FROM UNF;
 ```
 
-## Starta bash i vår container
+## Skapa School
 
-```bash
-docker exec -it iths-mysql bash
+```sql
+DROP TABLE IF EXISTS School;
+CREATE TABLE School AS SELECT DISTINCT 0 As SchoolId, School As Name, City FROM UNF;
+
+SET @id = 0;
+UPDATE School SET SchoolId =  (SELECT @id := @id + 1);
+
+ALTER TABLE School ADD PRIMARY KEY(SchoolId);
+```
+
+## Skapa kopplingstabell
+
+```
+CREATE TABLE StudentSchool AS SELECT DISTINCT UNF.Id AS StudentId, School.SchoolId
+FROM UNF INNER JOIN School ON UNF.School = School.Name;
+ALTER TABLE StudentSchool MODIFY COLUMN StudentId INT;
+ALTER TABLE StudentSchool MODIFY COLUMN SchoolId INT;
+ALTER TABLE School ADD PRIMARY KEY(StudentId, SchoolId);
+
+SELECT StudentId, FirstName, LastName FROM Student
+JOIN StudentSchool USING (StudentId);
+
+SELECT StudentId, FirstName, LastName, Name, City FROM Student
+JOIN StudentSchool USING (StudentId) 
+JOIN School USING (SchoolId);
 ```
