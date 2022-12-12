@@ -32,7 +32,7 @@ CREATE TABLE StudentSchool AS SELECT DISTINCT UNF.Id AS StudentId, School.School
 FROM UNF INNER JOIN School ON UNF.School = School.Name;
 ALTER TABLE StudentSchool MODIFY COLUMN StudentId INT;
 ALTER TABLE StudentSchool MODIFY COLUMN SchoolId INT;
-ALTER TABLE School ADD PRIMARY KEY(StudentId, SchoolId);
+ALTER TABLE StudentSchool ADD PRIMARY KEY(StudentId, SchoolId);
 
 SELECT StudentId, FirstName, LastName FROM Student
 JOIN StudentSchool USING (StudentId);
