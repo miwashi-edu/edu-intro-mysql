@@ -76,7 +76,7 @@ CREATE TABLE Student (
     StudentId INT NOT NULL,
     FirstName VARCHAR(255) NOT NULL,
     LastName VARCHAR(255) NOT NULL,
-    CONSTRAINT PRIMARY KEY (Id)
+    CONSTRAINT PRIMARY KEY (StudentId)
 )  ENGINE=INNODB;
 
 INSERT INTO Student (ID, FirstName, LastName) 
