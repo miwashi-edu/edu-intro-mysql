@@ -79,7 +79,7 @@ CREATE TABLE Student (
     CONSTRAINT PRIMARY KEY (StudentId)
 )  ENGINE=INNODB;
 
-INSERT INTO Student (ID, FirstName, LastName) 
+INSERT INTO Student (StudentID, FirstName, LastName) 
 SELECT DISTINCT Id, SUBSTRING_INDEX(Name, ' ', 1), SUBSTRING_INDEX(Name, ' ', -1) 
 FROM UNF;
 
