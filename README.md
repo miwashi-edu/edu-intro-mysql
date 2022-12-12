@@ -1,6 +1,6 @@
 # edu-intro-mysql
 
-> Normalisering av School
+> Normalisering av School, Student School är en så kallad många till många relation. Detta kräver en kopplingstabell.
 
 ## Undersök data
 
@@ -27,7 +27,7 @@ ALTER TABLE School ADD PRIMARY KEY(SchoolId);
 
 ## Skapa kopplingstabell
 
-```
+```sql
 CREATE TABLE StudentSchool AS SELECT DISTINCT UNF.Id AS StudentId, School.SchoolId
 FROM UNF INNER JOIN School ON UNF.School = School.Name;
 ALTER TABLE StudentSchool MODIFY COLUMN StudentId INT;
