@@ -57,3 +57,24 @@ CREATE VIEW PhoneList AS SELECT StudentId, group_concat(Number) AS Numbers FROM 
 
 SELECT FirstName, LastName, Numbers from Student JOIN PhoneList USING (StudentId);
 ```
+
+### Utan UNION
+
+```sql
+INSERT INTO Phone(StudentId, Type, Number) 
+SELECT ID As StudentId, "Home" AS Type, HomePhone as Number FROM UNF
+WHERE HomePhone IS NOT NULL AND HomePhone != '';
+
+INSERT INTO Phone(StudentId, Type, Number)
+SELECT ID As StudentId, "Job" AS Type, JobPhone as Number FROM UNF
+WHERE JobPhone IS NOT NULL AND JobPhone != '';
+
+INSERT INTO Phone(StudentId, Type, Number)
+SELECT ID As StudentId, "Mobile" AS Type, MobilePhone1 as Number FROM UNF
+WHERE MobilePhone1 IS NOT NULL AND MobilePhone1 != '';
+
+INSERT INTO Phone(StudentId, Type, Number)
+SELECT ID As StudentId, "Mobile" AS Type, MobilePhone2 as Number FROM UNF
+WHERE MobilePhone2 IS NOT NULL AND MobilePhone2 != '';
+;
+```
