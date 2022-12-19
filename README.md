@@ -46,9 +46,9 @@ SELECT ID As StudentId, "Home" AS Type, HomePhone as Number FROM UNF
 WHERE HomePhone IS NOT NULL AND HomePhone != ''
 UNION SELECT ID As StudentId, "Job" AS Type, JobPhone as Number FROM UNF
 WHERE JobPhone IS NOT NULL AND JobPhone != ''
-UNION SELECT ID As StudentId, "Mobile" AS MobilePhone1, HomePhone as Number FROM UNF
+UNION SELECT ID As StudentId, "Mobile" AS Type, MobilePhone1 as Number FROM UNF
 WHERE MobilePhone1 IS NOT NULL AND MobilePhone1 != ''
-UNION SELECT ID As StudentId, "Mobile" AS MobilePhone2, HomePhone as Number FROM UNF
+UNION SELECT ID As StudentId, "Mobile" AS Type, MobilePhone2 as Number FROM UNF
 WHERE MobilePhone2 IS NOT NULL AND MobilePhone2 != ''
 ;
 
