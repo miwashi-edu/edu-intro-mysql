@@ -38,7 +38,7 @@ CREATE TABLE Phone (
     StudentId INT NOT NULL,
     Type VARCHAR(32),
     Number VARCHAR(32) NOT NULL,
-    CONSTRAINT PRIMARY KEY(StudentId)
+    CONSTRAINT PRIMARY KEY(PhoneId)
 );
 
 INSERT INTO Phone(StudentId, Type, Number) 
