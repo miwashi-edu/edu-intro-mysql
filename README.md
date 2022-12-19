@@ -20,6 +20,10 @@
 
 > Ersätter string med 
 
+### group_concat(string, sökString, bytUtMedString)
+
+> Slår ihop en grupps (GROUP BY) värden (rader) till en komma separerad sträng. 
+
 ## Analys
 
 ```sql
@@ -46,7 +50,9 @@ FROM UNF;
 ## Alla första fält
 
 ```sql
-SELECT Id, "We want first from all!" AS Cause, Hobbies FROM UNF
+SELECT Id, "We want first from all!", HOBBIES FROM UNF
+WHERE Trim(SUBSTRING_INDEX(Hobbies, ",", 1))
+;
 ```
 
 ## Alla mittersta fält
