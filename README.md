@@ -38,11 +38,11 @@ WHERE trim(Hobbies) LIKE ",%"  OR trim(Hobbies) LIKE "%,";
 SELECT COUNT(*) FROM UNF 
 WHERE trim(Hobbies) LIKE ",%"  OR trim(Hobbies) LIKE "%,";
 
-/* Räkna komma tecken
+/* Räkna komma tecken */
 SELECT Hobbies, length(Hobbies) - length(replace(Hobbies, ',', '')) AS Count 
 FROM UNF;
 
-/* Kontrollera max antal Hobbies
+/* Kontrollera max antal Hobbies */
 SELECT max(length(Hobbies) - length(replace(Hobbies, ',', ''))) AS Max 
 FROM UNF;
 ```
