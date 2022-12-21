@@ -6,11 +6,11 @@
 DROP TABLE IF EXISTS Student;
 
 CREATE TABLE Student (
-    Id INT NOT NULL,
+    StudentId INT NOT NULL,
     Name VARCHAR(26) NOT NULL
 )  ENGINE=INNODB;
 
-INSERT INTO Student (Id, Name) SELECT Id, Name FROM UNF;
+INSERT INTO Student (StudentId, Name) SELECT Id, Name FROM UNF;
 
 select * from student;
 SELECT DISTINCT * FROM Student;
