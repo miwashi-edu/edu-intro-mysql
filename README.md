@@ -4,6 +4,7 @@
 
 > Vi kör ett SQL-script i vår realations databas (Mysql) som finns i en docker container.
 > Databasen är Sql-lites övningsdatabas och innehåller data för en affär Chinook, som säljer musik.
+> I slutet hittar du frågor där du ska använda DQL för att besvara dem.
 
 ## Instruktioner
 
@@ -41,34 +42,34 @@ show tables;
 ### Frågor
 
 frågor
-Hur många album finns det?
-Hur många artister finns det?
-Hur många låtar finns det?
-Hur många anställda har skivaffären Chinook?
-Hur många kunder har skivaffären?
-Vilka mediatyper säljer skivaffären?
+Hur många album finns det?  
+Hur många artister finns det?  
+Hur många låtar finns det?  
+Hur många anställda har skivaffären Chinook?  
+Hur många kunder har skivaffären?  
+Vilka mediatyper säljer skivaffären?  
 ---
-Hur många försäljningar har de gjort?
-Hur  många låtar har de sålt?
-När  gjordes första försäljningen?
-När  gjordes senaste försäljningen?
-Hur många försäljningar gjorde de 2013?
+Hur många försäljningar har de gjort?  
+Hur  många låtar har de sålt?  
+När  gjordes första försäljningen?  
+När  gjordes senaste försäljningen?  
+Hur många försäljningar gjorde de 2013?  
 
-Hur många städer har de kunder i?
-Hur många kunder har de i Stockholm?
-Hur många länder har de kunder i?
-Hur många kunder har de i Sverige?
-Hur  många kunder har de i England?
+Hur många städer har de kunder i?  
+Hur många kunder har de i Stockholm?  
+Hur många länder har de kunder i?  
+Hur många kunder har de i Sverige?  
+Hur  många kunder har de i England?  
 
 --- (frågor med join)
-Hur många Album har AC/DC
-tips: from Artist join Album on Artist.ArtistId = Album.ArtistId;
-alt: from Artist join Album using (ArtistId);
+Hur många Album har AC/DC? 
+tips: from Artist join Album on Artist.ArtistId = Album.ArtistId;  
+alt: from Artist join Album using (ArtistId);  
 
 --- (frågor med aggregering)
-Vilken artist har mest låtar?
-Vilken kund har gjort största inköp?
-Vad handlar kunder i genomsnitt för?
-Hur många låtar finns i genomsnitt per album?
-Hur många låtar har varje artist i genomsnitt?
-Vad är maximalt antal låtar en artist har?
+Vilken artist har mest låtar?  
+Vilken kund har gjort största inköp?  
+Vad handlar kunder i genomsnitt för?  
+Hur många låtar finns i genomsnitt per album?  
+Hur många låtar har varje artist i genomsnitt?  
+Vad är maximalt antal låtar en artist har?  
