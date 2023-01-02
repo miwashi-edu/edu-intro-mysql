@@ -29,7 +29,7 @@ docker exec -it container-with-mysql bash # Lägg till winpty om den klagar på 
 mysql -uroot -proot #Starta mysql
 ```
 
-### I MySql
+### I Mysql
 
 ```sql
 show databases;
