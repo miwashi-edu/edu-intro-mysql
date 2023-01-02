@@ -33,12 +33,14 @@ cd ~
 cd ws
 cd sql # Använd gärna din klonade repo som du använder för inlämning istället.
 touch normalization.sql
+
+# När vi är klara med normalization.sql, använder vi exec för att kora den som iths användare.
 docker exec -i container-with-mysql mysql -uiths -piths < normalization.sql
 ```
 
 ### Alternativ 1, Relationer
 
-#### Redigera normalisering.sql
+#### Redigera normalization.sql
 ```sql
 USE iths;
 
