@@ -41,14 +41,13 @@ show tables;
 
 ### Frågor
 
-frågor
 Hur många album finns det?  
 Hur många artister finns det?  
 Hur många låtar finns det?  
 Hur många anställda har skivaffären Chinook?  
 Hur många kunder har skivaffären?  
-Vilka mediatyper säljer skivaffären?  
----
+Vilka mediatyper säljer skivaffären?
+
 Hur många försäljningar har de gjort?  
 Hur  många låtar har de sålt?  
 När  gjordes första försäljningen?  
