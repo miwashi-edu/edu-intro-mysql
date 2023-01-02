@@ -12,20 +12,21 @@
 
 ```bash
 docker ps -a # Se om containern är igång
-docker start iths-mysql # Starta om den inte är igång
+docker start container-with-mysql # Starta om den inte är igång
 cd ws
 cd sql # Gå till en katalog där du har scriptet
 
+#Ladda ned SQL-script (det finns en länk nedan db.sql)
 curl -L  https://gist.github.com/miwashiab/e39a3228f0b389b6f3eca1b8c613bb2e/raw/db.sql -o db.sql
 
-docker exec -i iths-mysql mysql -uroot -proot < db.sql # Kör Scriptet
-docker exec -it iths-mysql bash # Lägg till winpty om den klagar på tty
+docker exec -i container-with-mysql mysql -uroot -proot < db.sql # Kör Scriptet
+docker exec -it container-with-mysql bash # Lägg till winpty om den klagar på tty
 ```
 
-### I container
+### I container-with-mysql
 
 ```bash
-mysql -uroot -proot
+mysql -uroot -proot #Starta mysql
 ```
 
 ### I MySql
