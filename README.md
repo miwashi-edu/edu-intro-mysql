@@ -60,5 +60,5 @@ docker stop container-with-mysql
 ## Starta bash i vår container
 
 ```bash
-docker exec -it iths-mysql bash
+docker exec -it container-with-mysql bash
 ```
