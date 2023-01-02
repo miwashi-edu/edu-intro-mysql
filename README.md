@@ -97,7 +97,7 @@ FROM (SELECT * FROM UNF WHERE HOBBIES != "") AS UNF2;
 
 ## Efteranalys
 
-> Så snart vi har en fråga, kan vi spara den so VY, eller så använder vi frågan för att göra en subquery av den. Istället för att spara som VY (vilket är enklare, väljer jag att gå vidare med subquerys, vilket är lika enkelt om du har tungan rätt i mun när du copy pejstar.
+> Så snart vi har en fråga, kan vi spara den som en VY, eller så använder vi frågan för att göra en subquery av den. Istället för att spara som VY (vilket är enklare, väljer jag att gå vidare med subquerys, vilket är lika enkelt om du har tungan rätt i mun när du copy pejstar.
 
 ```sql
 /* Skapa hjälp-tabellen Hobby */
