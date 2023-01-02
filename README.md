@@ -139,7 +139,7 @@ ALTER TABLE Student MODIFY COLUMN StudentId Int AUTO_INCREMENT;
 
 ### [2NF](https://en.wikipedia.org/wiki/Second_normal_form)
 
-> Förklaras bättre på nästa nivå.
+> Förklaras bättre på nästa level-5.
 
 ### [3NF](https://en.wikipedia.org/wiki/Third_normal_form)
 
