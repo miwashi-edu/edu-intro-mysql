@@ -1,5 +1,9 @@
 # edu-intro-mysql
 
+## Beskrivning
+
+> Importera flatfil (komma-separerad fil), in i mysql. Träning i främst DDL, DCL samt Teckenuppsättningar. Vi nämner även InnoDB och att mysql kan använda andra databas-motorer än InnoDB.
+
 ## Hämta komma-separerad datafil
 
 ```bash
@@ -7,12 +11,12 @@ cd ~
 cd sql
 curl -L  https://gist.github.com/miwashiab/d891a64c7f73f4c8c3b5cfee2b3de776/raw/denormalized-data.csv -o denormalized-data.csv
 docker ps
-docker start iths-mysql # Om den inte är igång
-docker cp denormalized-data.csv iths-mysql:/var/lib/mysql-files
-docker exec -it iths-mysql bash # Glöm inte winpty ifall tty problem
+docker start container-with-mysql # Om den inte är igång
+docker cp denormalized-data.csv container-with-mysql:/var/lib/mysql-files
+docker exec -it container-with-mysql bash # Glöm inte winpty ifall tty problem
 ```
 
-## I containern
+## I container-with-mysql
 ```bash
 cd /var/lib/mysql-files
 ls # Kolla att vi lyckats kopiera vår fil
@@ -25,11 +29,14 @@ mysql -uroot -proot
 SHOW GRANTS FOR iths;
 GRANT ALL PRIVILEGES ON iths.* TO 'iths'@'%';
 GRANT ALL PRIVILEGES ON Chinook.* TO 'iths'@'%';
+
+/* Rättigheter att ladda data fil */
 GRANT FILE ON *.* TO 'iths'@'%';
 SHOW GRANTS FOR iths;
 exit
 ```
-
+ > **_NOTE:_** __%__ ör wildcard, och då den står efter @, betyder det att alla nätverk är tillåtna att ansluta.
+ 
 ## I containern
 ```bash
 mysql -uiths -piths
@@ -67,6 +74,8 @@ SELECT * FROM UNF;
 DELETE FROM UNF;
 ```
 
-[MySql Character Sets](https://dev.mysql.com/doc/refman/8.0/en/charset-mysql.html)
+ > **_NOTE:_** Notera ENGINE=[INNODB](https://en.wikipedia.org/wiki/InnoDB), Mysql kan använda olika databasmotorer. InnoDB är den som är default sedan Mysql 5. 
 
-[denormalized-data gist](https://gist.github.com/miwashiab/d891a64c7f73f4c8c3b5cfee2b3de776)
+[MySql Character Sets](https://dev.mysql.com/doc/refman/8.0/en/charset-mysql.html)  
+
+[denormalized-data gist](https://gist.github.com/miwashiab/d891a64c7f73f4c8c3b5cfee2b3de776)  
