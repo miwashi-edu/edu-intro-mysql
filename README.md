@@ -45,7 +45,7 @@ docker ps
 docker ps -a
 ```
 
-## Starta MySql
+## Starta mysql
 
 ```bash
 docker start container-with-mysql
