@@ -80,6 +80,8 @@ FROM UNF INNER JOIN School ON UNF.School = School.Name;
 /* Vi putsar lite */
 ALTER TABLE StudentSchool MODIFY COLUMN StudentId INT;
 ALTER TABLE StudentSchool MODIFY COLUMN SchoolId INT;
+
+/* Vi kan välja mellan att lägga en Komposit Nyckel med StudentId + SchoolId, eller lägga till en kolumn med primärnyckel */
 ALTER TABLE StudentSchool ADD PRIMARY KEY(StudentId, SchoolId);
 
 SELECT StudentId, FirstName, LastName FROM Student
