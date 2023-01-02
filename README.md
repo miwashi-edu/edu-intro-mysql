@@ -23,7 +23,7 @@ docker run --name container-with-mysql\
            -d mysql/mysql-server:latest
 ```
 
-[tmpfs](https://docs.docker.com/storage/tmpfs/)
+> **_NOTE:_**  [tmpfs](https://docs.docker.com/storage/tmpfs/)
 
 ## Docker processer
 
