@@ -2,7 +2,7 @@
 
 ## Beskrivning
 
-> Importera flatfil (komma-separerad fil), in i mysql. Träning i främst DDL, DCL samt Teckenuppsättningar. Vi nämner även InnoDB och att mysql kan använda andra databas-motorer än InnoDB.
+> Importera flatfil (komma-separerad fil), in i mysql. Träning i främst DDL, DCL samt Teckenuppsättningar. Vi nämner även InnoDB och att mysql kan använda andra databas-motorer än den.
 
 ## Hämta komma-separerad datafil
 
