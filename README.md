@@ -2,7 +2,7 @@
 
 > Vi normaliserar Hobbies. Hobbies är en relation i relation, och den bryter mot 1NF.
 
-> **_NOTE:_**  Tänk på att det kan vara enklare att göra små vyer som man sparar på vägen istället för stora frågor, som jag väjer att göra.
+> **_NOTE:_**  Tänk på att det kan vara enklare att göra små vyer som man sparar på vägen istället för stora frågor, som jag väljer att göra.
 
 ## Analys
 
