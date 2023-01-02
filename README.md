@@ -8,14 +8,14 @@
 
 ```bash
 cd ~
-cd sql
+cd sql //Istället för mappen sql, kan du clona ditt inlämningsrepo från github och använda den istället.
 curl -L  https://gist.github.com/miwashiab/d891a64c7f73f4c8c3b5cfee2b3de776/raw/denormalized-data.csv -o denormalized-data.csv
 docker ps
 docker start container-with-mysql # Om den inte är igång
 docker cp denormalized-data.csv container-with-mysql:/var/lib/mysql-files
 docker exec -it container-with-mysql bash # Glöm inte winpty ifall tty problem
 ```
-
+> ### Note ### 
 ## I container-with-mysql
 ```bash
 cd /var/lib/mysql-files
