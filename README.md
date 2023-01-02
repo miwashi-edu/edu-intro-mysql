@@ -23,7 +23,7 @@ docker run --name container-with-mysql\
            -d mysql/mysql-server:latest
 ```
 -e = environment variable   
--p = port (din dators port: docker containerns port) För mysql är alltid porten 3306 på container sidan.  
+-p = port (din dators port: docker containerns port) För mysql är alltid porten 3306 på container sidan. Vill du ha många containrar startar du dem därför med -p 3306:3306, nästa med  -p 3307:3306, nästa med  -p 3308:3306 ...  
 -d = detatched, dvs den startar i bakgrunden (daemon) och du kan fortsätta jobba i terminalen.  
 --name = ditt namn på containern, utelämnar du denna får du ett slumpmässigt namn.  
 
