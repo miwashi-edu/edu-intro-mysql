@@ -74,19 +74,35 @@ INSERT INTO Student (StudentId, Name) SELECT DISTINCT Id, Name FROM UNF;
 #### Försök 3, med primärnyckel
 
 ```sql
-ALTER TABLE Student ADD PRIMARY KEY(Id);
+/* Skapa efteråt */
+ALTER TABLE Student ADD PRIMARY KEY(StudentId);
 
+/* Skapa samtidigt */
 DROP TABLE IF EXISTS Student;
 CREATE TABLE Student (
     StudentId INT NOT NULL,
     Name VARCHAR(26) NOT NULL,
-    CONSTRAINT PRIMARY KEY (Id)
+    CONSTRAINT PRIMARY KEY (StudentId)
 )  ENGINE=INNODB;
 
 DESC Student;
 ```
 
-#### Dela upp Förnamne och Efternamn
+#### Test, lägg till Student
+
+```sql
+INSERT INTO Student(Name) VALUES ("Karl Petterson");
+/* Ger ERROR 1364 Missing default value */
+
+/* Lägg till default värde på Id */
+ALTER TABLE Student MODIFY COLUMN StudentId Int AUTO_INCREMENT;
+INSERT INTO Student(Name) VALUES ("Karl Petterson");
+
+/* Och där har vi skapat konsistens, varje elev i egen rad i egen tabell, och varje ny elev får automatisk en primär nycker */
+```
+
+
+#### Bonus: Dela upp Förnamne och Efternamn
 
 > Man brukar ofta dela upp förnamn och efternamn, då det ofta är svårt att läsa utifrån namnet vilket som är förnamn och vilket som är efternamn.
 
