@@ -22,12 +22,12 @@ docker run --name container-with-mysql\
            --tmpfs /var/lib/mysql\
            -d mysql/mysql-server:latest
 ```
--e = environment variable 
--p = port (din dators port: docker containerns port) För mysql är alltid porten 3306 på container sidan.
--d = detatched, dvs den startar i bakgrunden (daemon) och du kan fortsätta jobba i terminalen.
---name = ditt namn på containern, utelämnar du denna får du ett slumpmässigt namn.
+-e = environment variable   
+-p = port (din dators port: docker containerns port) För mysql är alltid porten 3306 på container sidan.  
+-d = detatched, dvs den startar i bakgrunden (daemon) och du kan fortsätta jobba i terminalen.  
+--name = ditt namn på containern, utelämnar du denna får du ett slumpmässigt namn.  
 
-> **_NOTE:_**  [--tmpfs](https://docs.docker.com/storage/tmpfs/) kan ställa till problem, ta bort den i sådana fall.
+> **_NOTE:_**  [--tmpfs](https://docs.docker.com/storage/tmpfs/) kan ställa till problem, ta bort den i sådana fall.  
 
 ## Docker processer
 
