@@ -2,63 +2,132 @@
 
 ## Beskrivning 
 
-> Vi lånar en relationsdatabas. Detta gör vi via docker. Vi använder [run](https://docs.docker.com/engine/reference/commandline/run/) kommandot för att skapa en [image](https://docs.docker.com/engine/reference/commandline/images/) för en [container](https://www.docker.com/resources/what-container). Därefter använder vi [start](https://docs.docker.com/engine/reference/commandline/start/) och [stop](https://docs.docker.com/engine/reference/commandline/stop/) kommandon på vår container för att ha tillgång till den mysql databas som finns i den.
+> Sista benet, vi avslutar normaliseringen genom att normalsiera betyg.
 
-## Förberedelser
+> Varje elev har exakt ett betyg, eller inget. Varje betyg har många elever.
+> 
+```mermaid
+
+erDiagram
+    Student ||--o{ Phone : has
+    Student }|--o| Grade : has
+    Student ||--o{ StudentSchool : attends
+    School ||--o{ StudentSchool : enrolls
+    Student ||--o{ StudentHobby : has
+    Hobby ||--o{ StudentHobby : involves
+    
+    
+    Student {
+        int StudentId
+        string Name
+        int GradeId
+    }
+    
+    Phone {
+        int PhoneId
+        int StudentId
+        tinyint IsHome 
+        tinyint IsJob
+        tinyint IsMobile
+        string number
+    }
+    
+    School {
+        int SchoolId
+        string name
+        string City
+    }
+    
+    StudentSchool {
+        int StudentId
+        int SchoolId
+    }
+    
+    Hobby {
+        int HobbyId
+        string name
+    }
+    StudentHobby {
+        int StudentId
+        int HobbyId
+    }
+    
+    Grade {
+        int GradeId
+        string name
+    }
+    
+```
+
+## Analys
+
+```sql
+/* Vårt första smutsiga data */
+SELECT DISTINCT Grade FROM UNF;
 
 ## Instruktioner
 
-```bash
-docker pull mysql/mysql-server:latest
+```sql
+DROP TABLE IF EXISTS Grade;
+CREATE TABLE Grade (
+    GradeId INT NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    CONSTRAINT PRIMARY KEY (GradeId)
+)  ENGINE=INNODB;
+
+INSERT INTO Grade(Name) 
+SELECT DISTINCT Grade FROM UNF;
+
+ALTER TABLE Student ADD COLUMN GradeId INT NOT NULL;
+
+/* Ofta kan komplicerade join i en update leda till att resultatet av join får skrivskydd */
+/* Så just sådana här UPDATE satser kan kräva mycket slit */
+UPDATE Student JOIN UNF ON (StudentID = Id) JOIN Grade ON Grade.Name = UNF.Grade SET  Student.GradeId =  Grade.GradeId;
+
+/* Tänk på hur många rader du vill ha i resultatet, hitta tabellen med så många rader, lägg till nya tabeller med LEFT JOIN hela tiden, och du kommer att sluta med rätt antal rader */
+
+/* GRUND TABELL */
+SELECT StudentId as ID  FROM StudentSchool;
+
+/* LEFT JOIN 1 */
+SELECT StudentId as ID, Student.Name FROM StudentSchool 
+LEFT JOIN Student USING (StudentId);
+
+/* LEFT JOIN 2 */
+SELECT StudentId as ID, Student.Name, Grade.Name AS Grade FROM StudentSchool
+LEFT JOIN Student USING (StudentId)
+LEFT JOIN Grade USING (GradeId);
+
+
+/* LEFT JOIN 3 */
+SELECT StudentId as ID, Student.Name, Grade.Name AS Grade FROM StudentSchool
+LEFT JOIN Student USING (StudentId)
+LEFT JOIN Grade USING (GradeId);
+
+/* LEFT JOIN 4 */
+SELECT StudentId as ID, Student.Name, Grade.Name AS Grade, Hobbies, School.Name AS School, City FROM StudentSchool
+LEFT JOIN Student USING (StudentId)
+LEFT JOIN Grade USING (GradeId)
+LEFT JOIN HobbiesList USING (StudentID)
+LEFT JOIN School USING (SchoolId);
+
+/* LEFT JOIN 5 */
+SELECT StudentId as ID, Student.Name, Grade.Name AS Grade, Hobbies, School.Name AS School, City, Numbers FROM StudentSchool
+LEFT JOIN Student USING (StudentId)
+LEFT JOIN Grade USING (GradeId)
+LEFT JOIN HobbiesList USING (StudentId)
+LEFT JOIN School USING (SchoolId)
+LEFT JOIN PhoneList USING (StudentId);
+
+
+DROP VIEW IF EXISTS AVSLUT;
+CREATE VIEW AVSLUT AS
+SELECT StudentId as ID, Student.Name, Grade.Name AS Grade, Hobbies, School.Name AS School, City, Numbers FROM StudentSchool
+LEFT JOIN Student USING (StudentId)
+LEFT JOIN Grade USING (GradeId)
+LEFT JOIN HobbiesList USING (StudentId)
+LEFT JOIN School USING (SchoolId)
+LEFT JOIN PhoneList USING (StudentId);
 ```
+> Cirkeln är sluten. Vi började från en flatfil. Uppenbart tyckte någon att den var användbar. Så vi normaliserade databasen, men vi kan fortfarande komma åt data som liknar flatfilen.
 
-```bash
-docker run --name container-with-mysql\
-           -e MYSQL_ROOT_PASSWORD=root\
-           -e MYSQL_USER=auser\
-           -e MYSQL_PASSWORD=iths\
-           -e MYSQL_DATABASE=iths\
-           -p 3306:3306\
-           --tmpfs /var/lib/mysql\
-           -d mysql/mysql-server:latest
-```
--e = environment variable   
--p = port (din dators port: docker containerns port) För mysql är alltid porten 3306 på container sidan. Vill du ha många containrar startar du dem därför med -p 3306:3306, nästa med  -p 3307:3306, nästa med  -p 3308:3306 ...  
--d = detatched, dvs den startar i bakgrunden (daemon) och du kan fortsätta jobba i terminalen.  
---name = ditt namn på containern, utelämnar du denna får du ett slumpmässigt namn.  
-
-> **_NOTE:_**  [--tmpfs](https://docs.docker.com/storage/tmpfs/) kan ställa till problem, ta bort den i sådana fall.  
-
-## Docker processer
-
-> Se vad som körs
-
-```bash
-docker ps
-```
-
-## Se vad som inte körs
-
-> För att se containrar som stannat lägger vi till växeln -a
-
-```bash
-docker ps -a
-```
-
-## Starta mysql
-
-```bash
-docker start container-with-mysql
-```
-
-## Stoppa mysql
-
-```
-docker stop container-with-mysql
-```
-
-## Starta bash i vår container
-
-```bash
-docker exec -it container-with-mysql bash
-```
