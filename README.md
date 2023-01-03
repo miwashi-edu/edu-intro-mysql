@@ -64,6 +64,7 @@ erDiagram
 ```sql
 /* Vårt första smutsiga data */
 SELECT DISTINCT Grade FROM UNF;
+```
 
 ## Instruktioner
 
