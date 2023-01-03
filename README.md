@@ -102,9 +102,10 @@ LEFT JOIN Grade USING (GradeId);
 
 
 /* LEFT JOIN 3 */
-SELECT StudentId as ID, Student.Name, Grade.Name AS Grade FROM StudentSchool
+SELECT StudentId as ID, Student.Name, Grade.Name AS Grade, Hobbies FROM StudentSchool
 LEFT JOIN Student USING (StudentId)
-LEFT JOIN Grade USING (GradeId);
+LEFT JOIN Grade USING (GradeId)
+LEFT JOIN HobbiesList USING (StudentID);
 
 /* LEFT JOIN 4 */
 SELECT StudentId as ID, Student.Name, Grade.Name AS Grade, Hobbies, School.Name AS School, City FROM StudentSchool
