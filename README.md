@@ -61,6 +61,7 @@ erDiagram
 
 ## Analys
 
+> I det här fallet kommer jag inte att putsa data, men som elev kan du välja att ta bort redundans, felstavningar och dubletter.
 ```sql
 /* Vårt första smutsiga data */
 SELECT DISTINCT Grade FROM UNF;
