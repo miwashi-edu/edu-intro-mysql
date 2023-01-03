@@ -32,7 +32,7 @@ erDiagram
     
     School {
         int SchoolId
-        string name
+        string Name
         string City
     }
     
@@ -43,7 +43,7 @@ erDiagram
     
     Hobby {
         int HobbyId
-        string name
+        string Name
     }
     StudentHobby {
         int StudentId
