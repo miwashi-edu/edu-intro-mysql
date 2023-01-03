@@ -59,7 +59,7 @@ erDiagram
 
 ## Analys
 
-> I det här läget visar analysen att filen är väl organiserad. Hade analysen visat att det finns "smuts", hade vi använt UPDATE först för att putsa data.
+> I det här läget visar analysen att filen är väl organiserad. Hade analysen visat att det finns "smuts", hade vi använt DML eller UPDATE först för att putsa data innan vi normaliserar.
 
 ```sql
 /* Kontrollera om det finns mellanslag före eller efter */
