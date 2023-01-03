@@ -5,7 +5,7 @@
 > Sista benet, vi avslutar normaliseringen genom att normalsiera betyg.
 
 > Varje elev har exakt ett betyg, eller inget. Varje betyg har många elever.
-> 
+ 
 ```mermaid
 
 erDiagram
