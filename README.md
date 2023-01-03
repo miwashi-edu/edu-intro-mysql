@@ -30,11 +30,6 @@ erDiagram
         string number
     }
     
-    Student {
-        int StudentId
-        string Name
-    }
-    
     School {
         int SchoolId
         string name
