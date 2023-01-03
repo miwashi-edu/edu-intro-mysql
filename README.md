@@ -84,7 +84,8 @@ ALTER TABLE Student ADD COLUMN GradeId INT NOT NULL;
 
 /* Ofta kan komplicerade join i en update leda till att resultatet av join får skrivskydd */
 /* Så just sådana här UPDATE satser kan kräva mycket slit */
-UPDATE Student JOIN UNF ON (StudentID = Id) JOIN Grade ON Grade.Name = UNF.Grade SET  Student.GradeId =  Grade.GradeId;
+UPDATE Student JOIN UNF ON (StudentID = Id) JOIN Grade ON Grade.Name = UNF.Grade 
+SET  Student.GradeId =  Grade.GradeId;
 
 /* Tänk på hur många rader du vill ha i resultatet, hitta tabellen med så många rader, lägg till nya tabeller med LEFT JOIN hela tiden, och du kommer att sluta med rätt antal rader */
 
