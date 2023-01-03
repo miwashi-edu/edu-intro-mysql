@@ -132,5 +132,5 @@ LEFT JOIN HobbiesList USING (StudentId)
 LEFT JOIN School USING (SchoolId)
 LEFT JOIN PhoneList USING (StudentId);
 ```
-> Cirkeln är sluten. Vi började från en flatfil. Uppenbart tyckte någon att den var användbar. Så vi normaliserade databasen, men vi kan fortfarande komma åt data som liknar flatfilen.
+> Cirkeln är sluten. Vi slutar nästan där vi började. Inte 100% likhet men nära.
 
