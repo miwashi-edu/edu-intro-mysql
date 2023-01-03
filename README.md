@@ -1,8 +1,61 @@
 # edu-intro-mysql
 
+## Beskrivning
+
 > Vi normaliserar Hobbies. Hobbies är en relation i relation, och den bryter mot 1NF.
 
 > **_NOTE:_**  Tänk på att det kan vara enklare att göra små vyer som man sparar på vägen istället för stora frågor, som jag väljer att göra.
+
+```mermaid
+
+erDiagram
+    Student ||--o{ Phone : has
+    Student ||--o{ StudentSchool : attends
+    School ||--o{ StudentSchool : enrolls
+    Student ||--o{ StudentHobby : has
+    Hobby ||--o{ StudentHobby : involves
+    
+    
+    Student {
+        int StudentId
+        string Name
+    }
+    
+    Phone {
+        int PhoneId
+        int StudentId
+        tinyint IsHome 
+        tinyint IsJob
+        tinyint IsMobile
+        string number
+    }
+    
+    Student {
+        int StudentId
+        string Name
+    }
+    
+    School {
+        int SchoolId
+        string name
+        string City
+    }
+    
+    StudentSchool {
+        int StudentId
+        int SchoolId
+    }
+    
+    Hobby {
+        int HobbyId
+        string name
+    }
+    StudentHobby {
+        int StudentId
+        int HobbyId
+    }
+    
+```
 
 ## Analys
 
